@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Clear Valley Window Cleaning</title>
+
+    <style>
+      /*
+            #tophead:before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              width: 100%;
+              height: 100%;
+              box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+              filter: blur(10px);
+              background: inherit;
+      */
+
+      #tophead {
+        position: absolute;
+        border: 3px solid red;
+        width: 400px;
+        height: 200px;
+        top: 50px;
+        left: 50px;
+        z-index: 0;
+      }
+
+      #logo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+
+        border: 3px solid black;
+        border-radius: 50%;
+        z-index: 0;
+        margin-left: 25px;
+      }
+
+      #headings {
+        position: fixed;
+        top: 0;
+        left: 0;
+        top: 30px;
+        left: 350px;
+        word-spacing: 50px;
+        z-index: 0;
+        border: 3px solid red;
+      }
+
+      #container1 {
+        border: 5px solid black;
+        position: absolute;
+        top: 300px;
+        left: 100px;
+
+        line-height: 2;
+        z-index: 0;
+      }
+      #main {
+        position: relative;
+        top: 0;
+        left: 0;
+        font-size: 30px;
+        line-height: 2;
+        z-index: 0;
+      }
+
+      #botdiv {
+        position: absolute;
+        top: 1000px;
+        border: 5px solid black;
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="tophead">
+      <p id="headings">About Services Contact</p>
+      <img id="logo" src="images/clear_valley.jpeg" alt="Company logo" />
+    </div>
+
+    <div id="container1">
+      <p id="main">
+        About Us<br />
+        Services <br />Contact
+      </p>
+    </div>
+
+    <div id="botdiv"><h2>TEST</h2></div>
+  </body>
+</html>
