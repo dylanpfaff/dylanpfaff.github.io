@@ -1,0 +1,95 @@
+# dylanpfaff.github.io
+Project Website
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Shared expenses webpage</title>
+        
+        <style>
+        body {
+            background-color: rgb(134, 227, 207);
+            
+        }
+        
+        h2 {
+            color: rgb(189, 115, 45);
+            font-family: monospace;
+            font-size: 30px;
+        }
+        
+        div {
+            background-color: rgb(136, 216, 227);
+            border: 2px solid;
+            padding: 32px 20px 50px 9px;
+            margin: 20px 50px 20px 0px;
+            width: 300px;
+        }
+        
+        #results {
+            border: 2px solid;
+            padding: 32px 20px 50px 9px;
+            margin: 20px 50px 20px 0px;
+            width: 300px;
+        }
+        
+        #submit {
+            margin:0px 10px 10px 0px;
+        }
+        
+        
+        </style>
+        
+        <script>
+          
+            function calcAvg(){
+            var u1 = document.getElementById("u1").value;
+            var e1 = document.getElementById("e1").value;
+            var u2 = document.getElementById("u2").value;
+            var e2 = document.getElementById("e2").value;
+            
+            var sum = parseInt(e1, 10) + parseInt(e2, 10                );
+            var avg = sum/2;
+            
+            
+            var stat1 = e1 - avg;
+            var stat2 = e2 - avg;
+                
+                if (stat1 > 0){
+                    results.innerHTML = u1 + ' is owed $' +                      stat1;
+                } else {
+                    results.innerHTML = u2 + ' is owed $' +                      stat2;
+                }
+            
+            
+            
+            
+            };    
+            
+            
+        </script>
+        
+        
+    </head>
+    <body>
+    
+    <h2>Shared Expenses</h2>
+    
+    <form>
+    
+    <div>
+        <input id="u1" name='u1'  type="text" value="name"> <input id="e1" name='e1' type="text" value="expense"><br><br>
+        
+        <input id="u2" name='u2' type="text" value="name"> <input id="e2" name='e2' type="text" value="expense">
+    </div>
+    
+    <button id='submit' type='button' onclick="calcAvg()">Submit</button>
+    
+        
+    <div id="results">Display Results Here </div>
+    
+    <input type='submit' value="Save Results">
+    </form>
+    
+    </body>
+</html>
