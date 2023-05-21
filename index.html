@@ -6,9 +6,17 @@
         <title>Shared expenses webpage</title>
         
         <style>
-        body {
-            background-color: rgb(134, 227, 207);
             
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }    
+            
+        body {
+            margin: 0 auto;
+            max-width: 1024px;
+            background-color: rgb(134, 227, 207);
         }
         
         h2 {
@@ -16,6 +24,7 @@
             font-family: monospace;
             font-size: 30px;
         }
+            
         
         div {
             background-color: rgb(136, 216, 227);
@@ -102,25 +111,27 @@
       }
     </script>
   </head>
-  <body>
-    <h2>Shared Expenses</h2>
+  <header>
+      <body>
+        <h2>Shared Expenses</h2>
 
-    <form>
-      <div>
-        <input id="u1" name="u1" type="text" value="name" />
-        <input id="e1" name="e1" type="text" value="expense" /><br /><br />
+        <form>
+          <div>
+            <input id="u1" name="u1" type="text" value="name" />
+            <input id="e1" name="e1" type="text" value="expense" /><br /><br />
 
-        <input id="u2" name="u2" type="text" value="name" />
-        <input id="e2" name="e2" type="text" value="expense" />
-      </div>
+            <input id="u2" name="u2" type="text" value="name" />
+            <input id="e2" name="e2" type="text" value="expense" />
+          </div>
 
-      <button id="submit" type="button" onclick="calcAvg()">
-        Calculate Results
-      </button>
+          <button id="submit" type="button" onclick="calcAvg()">
+            Calculate Results
+          </button>
 
-      <div id="results">Display Results Here</div>
+          <div id="results">Display Results Here</div>
 
-      <input type="submit" value="Save Results" />
-    </form>
-  </body>
+          <input type="submit" value="Save Results" />
+        </form>
+      </body>
+  </header>
 </html>
