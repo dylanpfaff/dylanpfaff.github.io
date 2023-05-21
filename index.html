@@ -43,16 +43,17 @@
         var u2 = document.getElementById("u2").value;
         var e2 = document.getElementById("e2").value;
 
-        var sum = parseInt(e1, 10) + parseInt(e2, 10);
+        var sum = parseFloat(e1, 10) + parseFloat(e2, 10);
         var avg = sum / 2;
+        avg = avg.toFixed(2);
 
         var stat1 = e1 - avg;
         var stat2 = e2 - avg;
 
         if (stat1 > 0) {
-          results.innerHTML = u1 + " is owed $" + stat1;
+          results.innerHTML = u1 + " is owed $" + stat1.toFixed(2);
         } else {
-          results.innerHTML = u2 + " is owed $" + stat2;
+          results.innerHTML = u2 + " is owed $" + stat2.toFixed(2);
         }
       }
     </script>
@@ -80,3 +81,4 @@
     </body>
   </header>
 </html>
+
