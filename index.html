@@ -34,6 +34,14 @@
       #submit {
         margin: 0px 10px 10px 0px;
       }
+
+      .class input::placeholder {
+        color: transparent;
+      }
+
+      .class input:focus::placeholder {
+        color: gray;
+      }
     </style>
 
     <script>
@@ -63,16 +71,35 @@
       <form>
         <h2>Enter Shared Expenses</h2>
         <div>
-          <input id="u1" name="u1" type="text" placeholder="name" />
           <input
+            class="input"
+            id="u1"
+            name="u1"
+            type="text"
+            placeholder="name"
+          />
+          <input
+            class="input"
             id="e1"
             name="e1"
             type="text"
             placeholder="expense"
           /><br /><br />
 
-          <input id="u2" name="u2" type="text" placeholder="name" />
-          <input id="e2" name="e2" type="text" placeholder="expense" />
+          <input
+            class="input"
+            id="u2"
+            name="u2"
+            type="text"
+            placeholder="name"
+          />
+          <input
+            class="input"
+            id="e2"
+            name="e2"
+            type="text"
+            placeholder="expense"
+          />
         </div>
 
         <button id="submit" type="button" onclick="calcAvg()">
@@ -86,5 +113,4 @@
     </body>
   </header>
 </html>
-
 
