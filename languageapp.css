@@ -1,22 +1,28 @@
 body {
   background-color: rgb(20, 95, 70);
-  display: grid;
-  justify-content: center;
+}
+
+#newbody {
+  background-color: rgba(20, 95, 70, 0.9);
 }
 
 h1 {
   -webkit-text-fill-color: rgb(230, 179, 13);
   -webkit-text-stroke-color: 1px black;
   -webkit-text-stroke-width: 1px;
+  font-family: "Courier New", Courier, monospace;
+  margin: auto;
+  text-align: center;
+  font-size: 3em;
 }
 
-h1,
 h2 {
-  text-align: center;
+  margin: auto;
+  margin-bottom: 1em;
   font-family: "Courier New", Courier, monospace;
-  padding: 5px;
-  display: grid;
-  justify-content: center;
+  text-align: center;
+  width: 20em;
+  position: relative;
 }
 
 h2:hover {
@@ -31,30 +37,91 @@ form {
   border-radius: 30px;
   border: 2px solid;
   padding: 20px;
-  margin: 7px;
-}
-input {
-  padding: 2px;
-  margin: 7px;
+  margin: auto;
+  width: 20em;
+  position: relative;
 }
 
-#add-word {
-  display: grid;
-  justify-content: center;
-}
-
+select,
+input,
 #submit {
-  margin: 20px;
+  margin: auto;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
 }
 
-p:hover {
+#wordbank {
+  margin: auto;
+  width: 20em;
+  flex-wrap: inherit;
+  position: relative;
+  z-index: 1;
+  /*border: dashed;*/
+}
+/*
+#item {
+  width: 5em;
+  position: absolute;
+  z-index: 2;
+  border: solid;
+  background-color: aquamarine;
+}
+*/
+.word {
+  background-color: rgb(118, 107, 216);
+  border-radius: 5px;
+  border: 2px solid;
+  font-size: 1.05em;
+  padding: 0.5em;
+  /*margin: auto;*/
+  margin-bottom: 0.5em;
+  width: 15em;
+  z-index: 2;
+}
+
+.card {
+  background-color: rgb(118, 107, 216);
+  border-radius: 5px;
+  border: 2px solid;
+  word-spacing: 10px;
+  padding: 0.5em;
+  font-size: 30px;
+  width: 10em;
+  height: 12em;
+  margin: auto;
+  position: absolute;
+  z-index: 1;
+}
+
+.dltBtn {
+  float: right;
+}
+
+#munch {
+  width: 100px;
+
+  float: right;
+}
+
+/*
+.word:hover {
   background-color: rgb(118, 107, 216);
   border-radius: 5px;
   border: 2px solid;
   font-size: 1.05em;
   padding: 0.5em;
 }
+*/
+/*
+.card:hover {
+  background-color: rgb(118, 107, 216);
+  border-radius: 5px;
+  border: 2px solid;
 
+  padding: 0.5em;
+  font-size: 30px;
+}
+*/
 h2 {
   <!--html!--><buttonclass="button-54"role="button">button54</button>font-family: "Open Sans",
     sans-serif;
@@ -95,9 +162,10 @@ button {
     51,
     0.05
   );
-  border-radius: 8px;
-  border-width: 0;
-  color: #333333;
+  border-radius: 0px;
+  border-width: 2px;
+  background-color: rgb(230, 179, 13);
+  border-color: rgb(black);
   cursor: pointer;
   display: inline-block;
   font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
@@ -115,7 +183,4 @@ button {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-}
-
-button:hover {
 }

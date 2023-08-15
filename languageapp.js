@@ -1,6 +1,24 @@
+/*
+
+// setup
+const canvas = document.querySelector(".myCanvas");
+const width = (canvas.width = window.innerWidth);
+const height = (canvas.height = window.innerHeight);
+const ctx = canvas.getContext("2d");
+
+// import munch
+const munch = new Image();
+munch.src = "pot.png";
+
+// draw munch
+ctx.drawImage(munch, 500, 500, 100, 100);
+*/
+
 // open db
 let db;
 let sum;
+let display;
+
 const openRequest = window.indexedDB.open("wordbank_db", 1);
 
 openRequest.addEventListener("error", () =>
@@ -62,6 +80,115 @@ function addData() {
 
   readWords();
 }
+
+// display word bank
+function readWords() {
+  const words = document.getElementById("wordbank");
+
+  // check if words are already displayed using boolean
+  if (display) {
+    while (words.firstChild) {
+      words.removeChild(words.firstChild);
+    }
+    display = false;
+  } else {
+    // empty div to prevent duplicate results displayed
+    while (words.firstChild) {
+      words.removeChild(words.firstChild);
+    }
+
+    // start read transaction
+    db = openRequest.result;
+
+    const transaction = db.transaction(["wordbank_os"], "readonly");
+
+    const objectStore = transaction.objectStore("wordbank_os");
+
+    // get cursor
+    objectStore.openCursor().onsuccess = event => {
+      let cursor = event.target.result;
+
+      if (cursor) {
+        // variables for values
+        const word = cursor.value.word;
+        const translation = cursor.value.translation;
+        // create elements
+        const p1 = document.createElement("p");
+        const p2 = document.createElement("p");
+        const b1 = document.createElement("button");
+
+        // load valuues
+        p1.textContent = word;
+        p2.textContent = translation;
+        b1.textContent = "delete";
+
+        // assign attributes
+        p1.className = "word";
+        p1.setAttribute("id", cursor.value.id);
+        b1.className = "dltBtn";
+        b1.addEventListener("click", e => deleteWord(e));
+
+        // append delete button to p
+        p1.appendChild(b1);
+
+        // append p to div
+        words.appendChild(p1);
+
+        // attach event handler to p1
+        p1.addEventListener("click", () => {
+          if (p1.className == "word") {
+            p1.textContent = word;
+            p2.textContent = "translation: " + translation;
+            p1.appendChild(b1);
+
+            p1.className = "card";
+            document.body.setAttribute("id", "newbody");
+
+            console.log(p1.childNodes);
+          } else if (p1.className == "card") {
+            p1.textContent = word;
+            p2.textContent = "translation: " + translation;
+            p1.appendChild(b1);
+
+            p1.className = "word";
+            document.body.setAttribute("id", "");
+          }
+        });
+
+        cursor.continue();
+      } else {
+        display = true;
+        console.log("All words displayed");
+        console.log(display);
+      }
+    };
+  }
+}
+
+function deleteWord(event) {
+  const record = event.target.parentNode;
+  const id = parseInt(record.id);
+
+  db = openRequest.result;
+
+  const tx = db.transaction(["wordbank_os"], "readwrite");
+
+  const os = tx.objectStore("wordbank_os");
+
+  const deleteReq = os.delete(id);
+
+  deleteReq.addEventListener("success", id =>
+    console.log("successful removal of word")
+  );
+
+  deleteReq.addEventListener("error", id =>
+    console.log("error trying to remove word")
+  );
+
+  readWords();
+}
+
+/*
 
 //display data
 function displayData() {
@@ -134,60 +261,7 @@ function displayData() {
     console.log(cursor.value.word);
   });
 }
-
-// display word bank
-let display;
-const words = document.getElementById("test");
-
-function readWords() {
-  if (display == true) {
-    while (words.firstChild) {
-      words.removeChild(words.firstChild);
-    }
-    display = false;
-  } else {
-    console.log("load words");
-    while (words.firstChild) {
-      words.removeChild(words.firstChild);
-    }
-
-    openRequest.addEventListener("success", () => {
-      console.log("opened again");
-    });
-
-    const category = function() {
-      // for category page, on category click, this variable is passed into the getData function to display results requested by user
-    };
-
-    db = openRequest.result;
-
-    const transaction = db.transaction(["wordbank_os"], "readonly");
-
-    const objectStore = transaction.objectStore("wordbank_os");
-
-    //const index = objectStore.index("translation");
-
-    objectStore.openCursor().onsuccess = event => {
-      let cursor = event.target.result;
-
-      if (cursor) {
-        console.log(cursor.value.word);
-
-        const p1 = document.createElement("p");
-        const b1 = document.createElement("button");
-        p1.textContent = cursor.value.word;
-        words.appendChild(p1);
-        //b1.textContent = "delete";
-        // words.appendChild(b1);
-
-        cursor.continue();
-      } else {
-        console.log("Your words displayed :)");
-        display = true;
-      }
-    };
-  }
-}
+*/
 
 /*
   //for (let i = 0; i < wordbank_os.length)
