@@ -17,7 +17,7 @@ ctx.drawImage(munch, 500, 500, 100, 100);
 // open db
 let db;
 let sum;
-let display;
+let display = false;
 
 const openRequest = window.indexedDB.open("wordbank_db", 1);
 
@@ -67,22 +67,20 @@ function addData() {
   const addRequest = objectStore.add(newRecord);
 
   addRequest.addEventListener("success", () => {
-    //const form = document.getElementById("form");
-    //form.reset();
-    console.log(newRecord.keyPath);
-    console.log("success!");
+    const form = document.getElementById("add-word");
+    form.reset();
   });
 
   transaction.addEventListener("complete", () => {
-    console.log("Transacton completed: database modification finished");
-    console.log(newRecord.word);
+    console.log("Transacton completed: " + word + "added to your word bank");
   });
-
+  display = false;
   readWords();
 }
 
 // display word bank
 function readWords() {
+  // store wordbank div in variable
   const words = document.getElementById("wordbank");
 
   // check if words are already displayed using boolean
@@ -91,7 +89,7 @@ function readWords() {
       words.removeChild(words.firstChild);
     }
     display = false;
-  } else {
+  } else if (display == false) {
     // empty div to prevent duplicate results displayed
     while (words.firstChild) {
       words.removeChild(words.firstChild);
@@ -107,84 +105,98 @@ function readWords() {
     // get cursor
     objectStore.openCursor().onsuccess = event => {
       let cursor = event.target.result;
-
+      // if cursor is true, create elements and load values to display data
       if (cursor) {
         // variables for values
+        const id = cursor.value.id;
         const word = cursor.value.word;
         const translation = cursor.value.translation;
-        // create elements
+        const category = cursor.value.category;
+
+        console.log(cursor.value.translation);
+        // create elements to add values
+        const card = document.createElement("div");
         const p1 = document.createElement("p");
         const p2 = document.createElement("p");
+        const p3 = document.createElement("p");
         const b1 = document.createElement("button");
-
-        // load valuues
+        console.log(translation);
+        // load values
         p1.textContent = word;
-        p2.textContent = translation;
+        p2.textContent = "translation: " + translation;
+        p3.textContent = "category: " + category;
         b1.textContent = "delete";
 
         // assign attributes
-        p1.className = "word";
-        p1.setAttribute("id", cursor.value.id);
+        card.setAttribute("id", id);
+        card.className = "word";
+
         b1.className = "dltBtn";
         b1.addEventListener("click", e => deleteWord(e));
 
-        // append delete button to p
-        p1.appendChild(b1);
+        // append child elements to parent div called card
+        card.appendChild(p1);
 
-        // append p to div
-        words.appendChild(p1);
+        // append card div to word bank div
+        words.appendChild(card);
 
         // attach event handler to p1
-        p1.addEventListener("click", () => {
-          if (p1.className == "word") {
-            p1.textContent = word;
-            p2.textContent = "translation: " + translation;
-            p1.appendChild(b1);
+        card.addEventListener("click", () => {
+          if (card.className == "word") {
+            card.appendChild(p2);
+            card.appendChild(p3);
+            card.appendChild(b1);
+            console.log(p2);
+            //p1.textContent = word;
+            //p2.textContent = "translation: " + translation;
 
-            p1.className = "card";
+            card.className = "card";
             document.body.setAttribute("id", "newbody");
-
-            console.log(p1.childNodes);
-          } else if (p1.className == "card") {
-            p1.textContent = word;
-            p2.textContent = "translation: " + translation;
-            p1.appendChild(b1);
-
-            p1.className = "word";
+          } else if (card.className == "card") {
+            //p1.textContent = word;
+            //p2.textContent = "translation: " + translation;
+            card.removeChild(p2);
+            card.removeChild(p3);
+            card.removeChild(b1);
+            //reset class for next click to view minimized card
+            card.className = "word";
             document.body.setAttribute("id", "");
           }
         });
-
+        // continue calling cursor until returns false then else statement is called
         cursor.continue();
       } else {
         display = true;
         console.log("All words displayed");
-        console.log(display);
       }
     };
   }
 }
 
 function deleteWord(event) {
-  const record = event.target.parentNode;
-  const id = parseInt(record.id);
+  const text = "Do you really want to delete this word?";
 
-  db = openRequest.result;
+  if (confirm(text) == true) {
+    const record = event.target.parentNode;
+    const id = parseInt(record.id);
 
-  const tx = db.transaction(["wordbank_os"], "readwrite");
+    db = openRequest.result;
 
-  const os = tx.objectStore("wordbank_os");
+    const tx = db.transaction(["wordbank_os"], "readwrite");
 
-  const deleteReq = os.delete(id);
+    const os = tx.objectStore("wordbank_os");
 
-  deleteReq.addEventListener("success", id =>
-    console.log("successful removal of word")
-  );
+    const deleteReq = os.delete(id);
 
-  deleteReq.addEventListener("error", id =>
-    console.log("error trying to remove word")
-  );
+    deleteReq.addEventListener("success", id =>
+      console.log("successful removal of word")
+    );
 
+    deleteReq.addEventListener("error", id =>
+      console.log("error trying to remove word")
+    );
+  }
+  display = false;
   readWords();
 }
 
