@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shared Expenses App</title>
+
+    <link href="sharedexpenses.css" rel="stylesheet" />
+
+    <script src="sharedexpenses.js" defer></script>
+  </head>
+  <header>
+    
+    <a href="../index.html">Home</a>
+  </header>
+  <body>
+    <section>
+      <form id="form">
+        <div>
+            <h2>Enter Expenses</h2>
+          <input
+            class="input"
+            id="u1"
+            name="u1"
+            type="text"
+            required
+            placeholder="name"
+            class="userInput"
+          />
+
+          <input
+            class="input"
+            id="e1"
+            name="e1"
+            type="text"
+            required
+            placeholder="expense"
+            class="expenseInput"
+          />
+
+          <input
+            class="input"
+            id="u2"
+            name="u2"
+            type="text"
+            required
+            placeholder="name"
+            class="userInput"
+          />
+
+          <input
+            class="input"
+            id="e2"
+            name="e2"
+            type="text"
+            required
+            placeholder="expense"
+            class="expenseInput"
+          />
+          <button id="submit" type="button" class="button" onclick="calcAvg()">
+              Calculate Results
+            </button>
+            
+    
+            
+        </form>
+        </div>
+        <div id="results">
+          <h2>Display Results</h2>
+            
+            <button id="addToStore" type="button" onclick="addData()">
+                Save Results
+              </button>
+      </div>
+    </section>
+    <section>
+      
+      <div>
+          <h2>Records</h2>
+        <button id="displayBtn" type="button" onclick="displayData()">
+          Display Expense Records
+        </button>
+        <button id="hideBtn" type="button" onclick="hideData()">
+          Hide Expense Records
+        </button>
+        <ul id="list">
+          Display Records Here
+        </ul>
+      </div>
+    </section>
+    <div><h2>Expenses over Time</h2><canvas id="myCanvas" width="329" height="330"></canvas></div>
+    
+      
+   
+  </body>
+</html>
