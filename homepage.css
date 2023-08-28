@@ -14,7 +14,8 @@ h1 {
   background-color: rgb(75, 124, 18);
   position: fixed; /* Set the#navbar to fixed position */
   top: 0; /* Position the#navbar at the top of the page */
-  width: 100%; /* Full width */
+  /* width: 100%; Full width */
+  display: flex;
   height: 5em;
 }
 
