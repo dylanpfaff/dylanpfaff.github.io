@@ -47,7 +47,7 @@ openRequest.addEventListener("upgradeneeded", e => {
 
   console.log("Database setup complete");
 });
-
+const resultsP = document.getElementById("showResults");
 // calc input results
 function calcAvg() {
   var u1 = document.getElementById("u1").value;
@@ -63,17 +63,16 @@ function calcAvg() {
   var stat1 = e1 - avg;
   var stat2 = e2 - avg;
 
-  const resultsDiv = document.getElementById("results");
   if (stat1 > 0) {
-    const p = document.createElement("p");
-    p.setAttribute("id", results);
-    p.textContent = u1 + " is owed $" + stat1.toFixed(2);
-    resultsDiv.appendChild(p);
+    // const p = document.createElement("p");
+    // p.setAttribute("id", results);
+    resultsP.textContent = u1 + " is owed $" + stat1.toFixed(2);
+    // resultsDiv.appendChild(p);
   } else {
-    const p = document.createElement("p");
-    p.setAttribute("id", results);
-    p.textContent = u2 + " is owed $" + stat2.toFixed(2);
-    resultsDiv.appendChild(p);
+    // const p = document.createElement("p");
+    // p.setAttribute("id", results);
+    resultsP.textContent = u2 + " is owed $" + stat2.toFixed(2);
+    // resultsDiv.appendChild(p);
   }
 }
 
@@ -115,8 +114,8 @@ function addData() {
   transaction.addEventListener("complete", () => {
     console.log("Transacton completed: database modification finished");
   });
-  let results = document.getElementById("results");
-  results.textContent = "Added to your records.";
+  // let results = document.getElementById("results");
+  resultsP.textContent = "Added to your records.";
   displayData();
 }
 
@@ -308,7 +307,7 @@ function displayData() {
       // Again, if list item is empty, display a 'No notes stored' message
       if (!list.firstChild) {
         const newRecord = document.createElement("li");
-        newRecord.textContent = "No notes stored.";
+        newRecord.textContent = "No records stored.";
         list.appendChild(newRecord);
       }
     }
