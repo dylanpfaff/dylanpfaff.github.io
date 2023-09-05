@@ -36,10 +36,11 @@ div {
 /* Links inside the#navbar */
 #navbar a {
   float: left;
-  /* display: block; */
+  display: block;
   color: rgba(153, 36, 36, 1);
   text-align: center;
   text-decoration: none;
+
   margin: 1em;
   font-size: 1.3em;
 }
@@ -61,7 +62,13 @@ div {
 
 #headshot {
   border: 1px solid white;
+
   /* display: grid; */
+}
+
+.pixelart {
+  width: 256px;
+  border: 1px solid white;
 }
 
 /* CSS */
