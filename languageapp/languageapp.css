@@ -103,9 +103,8 @@ p {
 }
 
 #munch {
-  width: 100px;
-
   float: right;
+  border-radius: 100%;
 }
 
 /*

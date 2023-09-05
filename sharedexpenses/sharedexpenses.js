@@ -216,13 +216,13 @@ function displayData() {
         "Nov",
         "Dec"
       ];
-      let date = graphData[i].x;
-      let month = date.getMonth();
-      let monthName = monthList[month];
+      // let date = graphData[i].x;
+      // // let month = date.getMonth();
+      // // let monthName = monthList[month];
 
-      ctx.fillStyle = "black";
-      ctx.font = "12px Georgia";
-      ctx.fillText(monthName, x - 8, originY + 20);
+      // ctx.fillStyle = "black";
+      // ctx.font = "12px Georgia";
+      // ctx.fillText(monthName, x - 8, originY + 20);
     }
   };
 
@@ -235,7 +235,7 @@ function displayData() {
   }
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   // graphData.splice(0, graphData.length);
-  console.log("array length: " + graphData.length);
+  // console.log("array length: " + graphData.length);
 
   // start transaction
   const objectStore = db.transaction(["records_os"]).objectStore("records_os");
@@ -257,6 +257,21 @@ function displayData() {
       const p5 = document.createElement("p");
       const p6 = document.createElement("p");
 
+      p1.setAttribute("class", "date");
+      p2.setAttribute("class", "name1");
+      p3.setAttribute("class", "expense1");
+      p4.setAttribute("class", "name2");
+      p5.setAttribute("class", "expense2");
+      p6.setAttribute("class", "sum");
+
+      p1.addEventListener("click", e => {
+        console.log("it works! p1 class Name is: " + e.target.className);
+        updateData(e);
+      });
+      p2.addEventListener("click", e => {
+        console.log("it works! p2 class Name is: " + e.target.className);
+        updateData(e);
+      });
       newRecord.appendChild(p1);
       newRecord.appendChild(p2);
       newRecord.appendChild(p3);
@@ -266,10 +281,11 @@ function displayData() {
       list.appendChild(newRecord);
 
       let date = cursor.value.date;
-      let string = date.toDateString();
+
+      // let string = date.toDateString();
 
       // Put the data from the cursor inside the paragraph
-      p1.textContent = "Date: " + string;
+      p1.textContent = "Date: " + date;
       p2.textContent = "Contributor 1: " + cursor.value.name1;
       p3.textContent = "Expense 1: " + cursor.value.expense1;
       p4.textContent = "Contributor 1: " + cursor.value.name2;
@@ -279,8 +295,7 @@ function displayData() {
       // Store the ID of the data item inside an attribute on the newRecord, so we know
       // which item it corresponds to. This will be useful later when we want to delete items
       newRecord.setAttribute("cursorId", cursor.value.id);
-      //console.log(cursor.value.id);
-      //console.log(newRecord.getAttribute("cursorId"));
+
       // Create a button and place it inside each newRecord
       const deleteBtn = document.createElement("button");
       newRecord.appendChild(deleteBtn);
@@ -302,7 +317,7 @@ function displayData() {
 
       cursor.continue();
     } else {
-      console.log("new array length: " + graphData.length);
+      // console.log("new array length: " + graphData.length);
       plot();
       // Again, if list item is empty, display a 'No notes stored' message
       if (!list.firstChild) {
@@ -322,6 +337,72 @@ function hideData() {
   while (list.firstChild) {
     list.removeChild(list.firstChild);
   }
+}
+
+let input;
+
+function updateData(event) {
+  db = openRequest.result;
+
+  const record = event.target.parentNode;
+
+  const attr = record.getAttribute("cursorId");
+
+  const id = parseInt(attr);
+
+  const pElement = event.target;
+
+  const key = pElement.getAttribute("class");
+
+  console.log("id is: " + id + " and className is: " + key);
+  // some data will require parsInt() beforehand
+
+  const transaction = db.transaction(["records_os"], "readwrite");
+
+  const objectStore = transaction.objectStore("records_os");
+
+  // const getRequest = objectStore.get(id);
+
+  if (key == "date") {
+    input = document.createElement("input");
+    input.type = "date";
+    pElement.appendChild(input);
+    return input;
+    // dataRecord.date = input.value;
+  }
+  console.log(input.value);
+  // getRequest.onsuccess = () => {
+  //   const dataRecord = getRequest.result;
+  //   if (key == "date") {
+  //     const input = document.createElement("input");
+  //     input.type = "date";
+  //     pElement.appendChild(input);
+  //     // dataRecord.date = input.value;
+  //     console.log(input.value);
+  //   }
+  //   if (key == "name1") {
+  //     dataRecord.name1 = "input";
+  //   }
+  //   if (key == "expense1") {
+  //     dataRecord.expense1 = "input";
+  //   }
+  //   if (key == "name2") {
+  //     dataRecord.name2 = "input";
+  //   }
+  //   if (key == "name1") {
+  //     dataRecord.expense2 = "input";
+  //   }
+  //   if (key == "sum") {
+  //     dataRecord.sum = "input";
+  //   }
+
+  // const updateRequest = objectStore.put(dataRecord);
+
+  // updateRequest.onsuccess = () => {
+  //   console.log(dataRecord) + " was successfully updated";
+  //   displayData();
+  // };
+  // };
 }
 
 function deleteRecord(event) {
@@ -352,6 +433,4 @@ function deleteRecord(event) {
     console.log("Record" + id + " is deleted.");
     displayData();
   });
-
-  console.log(id);
 }

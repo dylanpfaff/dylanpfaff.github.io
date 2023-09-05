@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dylan S Pfaff</title>
 
+    <!-- HTML in your document's head -->
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
     <link href="homepage.css" rel="stylesheet" />
 
     <script src="homepage.js" defer></script>
   </head>
   <body>
-   
+    <div id="banner"></div>
     <div id="home">
       <div id="navbar">
+        <img id="logo" src="mint_print_logo.jpg" width="100px" />
         <a class="active" href="#home">Home</a>
         <a href="#about">About Me</a>
         <a href="#projects">Projects</a>
@@ -21,7 +26,7 @@
     </div>
     <div id="about">
       <h2>About me</h2>
-      <img src="port-photo.jpg" width="200" />
+      <img id="headshot" src="port-photo.jpg" width="200" />
       <p>Skills, education, interests, etc.</p>
     </div>
     <div id="projects">
@@ -29,12 +34,15 @@
       <a href="sharedexpenses/sharedexpensesapp.html">Shared Expenses App</a
       ><br />
       <a href="languageapp/languageapp.html">GabbaGrammar Language App</a><br />
+
       <!-- <a href="lawnchomper/lawnchomper.html">Lawn Chomper</a><br />
       <a href="bonsai/bonsai.html">Bonsai Garden</a> -->
     </div>
     <div id="contact">
       <h2>Contact Me</h2>
-      <p>e-mail, phone, etc.</p>
+      <p>dylan.s.pfaff@gmail.com, phone, etc.</p>
+      <img id="cat" src="cat.gif" />
+      <canvas></canvas>
     </div>
   </body>
 </html>
