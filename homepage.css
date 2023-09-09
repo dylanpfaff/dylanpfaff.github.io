@@ -31,12 +31,12 @@ div {
 }
 
 .responsive {
-  max-width: 45%;
-  min-width: 400px;
+  /* max-width: 45%; */
+  /* min-width: 400px; */
+  width: 450px;
   height: auto;
   border: 3px solid rgb(156, 15, 15);
   border-radius: 5%;
-  width: 45%;
   margin-top: 100px;
   margin-bottom: 25px;
 }
