@@ -1,15 +1,45 @@
 body {
   background-color: rgb(170, 97, 97);
-  margin: auto;
+  /* margin: auto; */
   padding-top: 50px;
 }
 
-#about,
-#projects,
-#contact {
-  border-bottom: solid rgba(106, 5, 5, 1);
-
+#about {
   color: rgb(138, 19, 19);
+  background-color: rgba(211, 141, 141, 1);
+  height: 500px;
+}
+
+#contact {
+  background-color: rgba(211, 141, 141, 1);
+  color: rgb(138, 19, 19);
+  height: 300px;
+  border-top: 2px solid grey;
+}
+
+#projects,
+#footer {
+  color: rgb(138, 19, 19);
+  height: 300px;
+  background-color: rgb(170, 97, 97);
+  border-top: 2px solid grey;
+  margin: auto;
+}
+
+#projects > * {
+  position: relative;
+  top: 50px;
+}
+
+li {
+  color: white;
+}
+/* .h2 {
+  margin-bottom: 25px;
+} */
+
+a {
+  font-size: 20px;
 }
 
 div {
@@ -17,37 +47,49 @@ div {
   text-align: center;
 }
 
-.h2 {
-  padding-bottom: 100px;
+#headshot {
+  position: relative;
+  top: 75px;
 }
 
-#about,
-#contact {
-  background-color: rgba(211, 141, 141, 1);
+#tag {
+  position: relative;
+  top: 80px;
+}
+.responsive {
+  /* max-width: 45%; */
+  min-width: 300px;
+  width: 45%;
+  height: auto;
+  border: 2px solid gray;
+  border-radius: 5%;
+  /* margin-top: 100px;
+  margin-bottom: 25px; */
+}
+
+#contact-content {
+  position: relative;
+  margin: auto;
+  text-align: left;
+  width: 300px;
+  top: 25px;
+  bottom: 25px;
+  /* padding-top: 25px;
+  padding-bottom: 25px; */
 }
 
 #projects {
   background-color: rgb(170, 97, 97);
 }
 
-.responsive {
-  /* max-width: 45%; */
-  /* min-width: 400px; */
-  width: 450px;
-  height: auto;
-  border: 3px solid rgb(156, 15, 15);
-  border-radius: 5%;
-  margin-top: 100px;
-  margin-bottom: 25px;
-}
-
-#tag {
-  margin-bottom: 175px;
+footer {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .pixelart {
-  width: 256px;
-  border: 3px solid rgb(156, 15, 15);
+  width: 20%;
+  border: 10px solid grey;
 }
 
 /* CSS */
@@ -58,4 +100,32 @@ div {
   :root {
     font-family: "Inter var", sans-serif;
   }
+}
+
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: rgb(156, 15, 15); /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+  width: 60px;
+  height: 60px;
+}
+
+#caret {
+  position: relative;
+  bottom: 20px;
+  font-size: 60px;
+}
+
+#myBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
 }
