@@ -30,15 +30,12 @@ div {
   background-color: rgb(170, 97, 97);
 }
 
-#headshot {
-}
-
 .responsive {
-  max-width: 50%;
+  /* max-width: 100%; */
   height: auto;
   border: 3px solid rgb(156, 15, 15);
   border-radius: 5%;
-  width: 40%;
+  width: 45%;
   margin-top: 100px;
   margin-bottom: 25px;
 }
