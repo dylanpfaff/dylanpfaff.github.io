@@ -32,10 +32,11 @@ div {
 
 .responsive {
   max-width: 45%;
+  min-width: 350px;
   height: auto;
   border: 3px solid rgb(156, 15, 15);
   border-radius: 5%;
-  /* width: 45%; */
+  width: 45%;
   margin-top: 100px;
   margin-bottom: 25px;
 }
