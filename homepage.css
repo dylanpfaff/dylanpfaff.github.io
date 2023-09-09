@@ -1,17 +1,20 @@
 body {
   background-color: rgb(170, 97, 97);
   margin: auto;
-  margin-top: 10em;
+  padding-top: 60px;
 }
 
-h2 {
+#about,
+#projects,
+#contact {
   border-bottom: solid rgba(106, 5, 5, 1);
-  background-color: rgba(238, 182, 182, 1);
+
   color: rgba(173, 66, 66, 1);
 }
 
 div {
   width: 100vw;
+  text-align: center;
 }
 
 #about,
@@ -23,52 +26,22 @@ div {
   background-color: rgb(170, 97, 97);
 }
 
-#navbar {
-  /* overflow: hidden; */
-  background-color: rgba(238, 182, 182, 1);
-  position: fixed; /* Set the#navbar to fixed position */
-  top: 0; /* Position the  #navbar at the top of the page  */
-  width: 100vw;
-  /* height: 3em; */
-  border-bottom: 0.5em solid rgba(106, 5, 5, 1);
-}
-
-/* Links inside the#navbar */
-#navbar a {
-  float: left;
-  display: block;
-  color: rgba(153, 36, 36, 1);
-  text-align: center;
-  text-decoration: none;
-
-  margin: 1em;
-  font-size: 1.3em;
-}
-
-/* Change background on mouse-over */
-#navbar a:hover {
-  background: #ddd;
-  color: black;
-}
-
-#logo {
-  float: left;
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  margin: 0.5em;
-  border-radius: 20%;
-}
-
 #headshot {
-  border: 1px solid white;
+  border: 3px solid rgb(156, 15, 15);
+  border-radius: 30%;
+  align-content: center;
+  width: 500px;
+  margin: 100px;
+  margin-bottom: 25px;
+}
 
-  /* display: grid; */
+#tag {
+  margin-bottom: 175px;
 }
 
 .pixelart {
   width: 256px;
-  border: 1px solid white;
+  border: 3px solid rgb(156, 15, 15);
 }
 
 /* CSS */
