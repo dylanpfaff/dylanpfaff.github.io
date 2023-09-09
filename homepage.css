@@ -34,11 +34,11 @@ div {
 }
 
 .responsive {
-  max-width: 100%;
+  max-width: 50%;
   height: auto;
   border: 3px solid rgb(156, 15, 15);
   border-radius: 5%;
-  width: 50%;
+  width: 40%;
   margin-top: 100px;
   margin-bottom: 25px;
 }
