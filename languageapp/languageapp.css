@@ -10,7 +10,7 @@ h1 {
   -webkit-text-fill-color: rgb(230, 179, 13);
   -webkit-text-stroke-color: 1px black;
   -webkit-text-stroke-width: 1px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: Georgia, Times, "Times New Roman", serif;
   margin: auto;
   text-align: center;
   font-size: 3em;
@@ -19,7 +19,8 @@ h1 {
 h2 {
   margin: auto;
   margin-bottom: 1em;
-  font-family: "Courier New", Courier, monospace;
+  font-family: Georgia, Times, "Times New Roman", serif;
+
   text-align: center;
   width: 20em;
   position: relative;
@@ -127,7 +128,7 @@ p {
 }
 */
 h2 {
-  font-family: "Open Sans", sans-serif;
+  /* font-family: "Open Sans", sans-serif; */
   font-size: 16px;
   letter-spacing: 2px;
   text-decoration: none;
@@ -165,8 +166,8 @@ button {
   border-color: rgb(black);
   cursor: pointer;
   display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
+  /* font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif; */
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;

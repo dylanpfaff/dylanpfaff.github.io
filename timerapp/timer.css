@@ -1,0 +1,26 @@
+
+canvas {
+    border: 3px solid black;
+    /* text-align: center; */
+/* width: 100vw;
+height: 100vh; */
+  }
+  
+body {
+    border: 3px solid rgb(69, 194, 31);
+    background-color: rebeccapurple;
+    justify-content: center;
+    text-align: center;
+}
+
+div {
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    border: 3px solid red;
+  }
+
+
+#timer {
+    
+}
