@@ -1,16 +1,19 @@
 
 canvas {
-    border: 3px solid black;
+    border: 3px solid rgb(52, 4, 76);
+    background-color: rgb(68, 31, 105); 
     /* text-align: center; */
 /* width: 100vw;
 height: 100vh; */
   }
   
 body {
-    border: 3px solid rgb(69, 194, 31);
-    background-color: rebeccapurple;
+    /* border: 3px solid rgb(69, 194, 31); */
+    /* background-color: rebeccapurple; */
     justify-content: center;
     text-align: center;
+    width: 100vw;
+    height: 100vh;
 }
 
 div {

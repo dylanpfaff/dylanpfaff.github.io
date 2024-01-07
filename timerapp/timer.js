@@ -2,40 +2,45 @@
 // get canvas
 let canvas = document.querySelector('canvas');
 let ctx = canvas.getContext('2d');
+let body = document.querySelector('body');
 
 
 // get image
 let img = new Image();
-img.src = "sand.png";
+img.src = "sa.png";
 // img.src = "sand.png";
 img.setAttribute("id", "timer");
+
+let song = new Audio();
+song.src = "congrats.mp3"
 
 
 
 // call drawing on img load
 img.onload = function() {
   init();
+  
 };
 
 
-
-
-
-
 // setup canvas and image parameters
-const width = 512;
-const height = 512;
+const width = img.naturalWidth/3;
+const height = img.naturalHeight;
 const scale = 1;
 const scaledWidth = scale * width;
 const scaledHeight = scale * height;
 
-canvas.width = img.naturalWidth / 3 * scale ;
+canvas.width = img.naturalWidth / 3 * scale;
 canvas.height = img.naturalHeight * scale;
-let imgCenter = width / 2;
-let windowCenter = window.visualViewport.width / 2;
-let canvasCenter = windowCenter - imgCenter;
 
 
+ 
+window.addEventListener("click", song.play());
+
+
+// let imgCenter = width / 2;
+// let windowCenter = window.visualViewport.width / 2;
+// let canvasCenter = windowCenter - imgCenter;
 // console.log("window.visualViewport.width: " + window.visualViewport.width);
 // console.log("windowCenter: " + windowCenter);
 // console.log("canvasCenter: " + canvasCenter);
