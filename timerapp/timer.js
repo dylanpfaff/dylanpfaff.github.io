@@ -26,7 +26,7 @@ img.onload = function() {
 // setup canvas and image parameters
 const width = img.naturalWidth/3;
 const height = img.naturalHeight;
-const scale = 1;
+const scale = 1.5;
 const scaledWidth = scale * width;
 const scaledHeight = scale * height;
 
