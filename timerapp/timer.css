@@ -23,7 +23,7 @@ body {
 #time, #player {
   margin: auto;
   padding-top: 15px;
-  width: 20vw;
+  width: 30vw;
   height: 10vh;
   font-size: 25px;
   border: 3px solid rgb(0, 0, 0);
@@ -33,13 +33,21 @@ body {
 
 #start-button, #reset-button {
 
-    width: 10vw;
-    height: 10vh;
+    width: 30vw;
+    height: 30vh;
     border-radius: 10px;
 }
 
 a {
 font-size: 25px;
+}
+
+#rounds {
+  position: absolute;
+top: 25px;
+right: 25px;
+font-size: 20px;
+background-color: rgb(rgb(183, 27, 27));
 }
 
 #home {

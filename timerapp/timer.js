@@ -137,6 +137,10 @@ resetButton.addEventListener("click", () => {
   // sum total time
 
 let sum = 0;
+let secs;
+let mins;
+let hrs;
+
 function sumMembers(){
   
 
@@ -150,9 +154,23 @@ function sumMembers(){
   
 sumMembers();
 
+function convertToHMS(){
+
+
+hrs = Math.floor(sum / 3600);
+
+mins = Math.floor(sum % 3600 / 60);
+
+secs = Math.floor(sum % 3600 % 60);
+
+console.log(hrs + ":" + mins + ":" + secs);
+}
+
+convertToHMS();
+
   //let id = players[currentPlayerIndex].turns;
   // update turns 
-  document.getElementById(currentPlayer + "array").innerHTML = sum;
+  document.getElementById(currentPlayer + "array").innerHTML = hrs + "h:" + mins + "m:" + secs + "s";
   
   
 
@@ -165,6 +183,9 @@ sumMembers();
     currentPlayerIndex = 0;
     rounds++;
   }
+
+  document.getElementById("rounds").innerHTML = "Rounds: " + rounds;
+
   
   currentPlayer = players[currentPlayerIndex].name;
   currentPlayerTurns = players[currentPlayerIndex].turns;
