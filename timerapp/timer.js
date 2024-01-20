@@ -64,14 +64,23 @@ if (numberOfPlayers == 0){
     let newRow = document.createElement("tr");
     let playerName = document.createElement("td");
     let playerTurns = document.createElement("td");
+    let lifeScore = document.createElement("td");
     newRow.appendChild(playerName);
     newRow.appendChild(playerTurns);
+    newRow.appendChild(lifeScore);
     table.appendChild(newRow);
     playerName.innerHTML = player;
     //playerTurns.innerHTML
     playerName.setAttribute("id", player);
     playerTurns.setAttribute("id", player + "array");
+
     }
+
+    let p1 = document.getElementById("p-1-life");
+    let p2 = document.getElementById("p-2-life");
+
+    p1.innerText = "Dylan";
+    p2.innerText = "Dave";
   }
 
 

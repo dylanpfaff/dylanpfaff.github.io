@@ -49,7 +49,52 @@
           <th>Total Time</th>
         </tr>
       </table>
-      <div id="players"></div>
+      <div id="life-counter">
+        <p id="p-1-life"></p>
+        <input
+          type="button"
+          value="-"
+          class="button-minus"
+          data-field="quantity"
+        />
+        <input
+          type="number"
+          step="1"
+          max=""
+          value="1"
+          name="quantity"
+          class="quantity-field"
+        />
+        <input
+          type="button"
+          value="+"
+          class="button-plus"
+          data-field="quantity"
+        /><br />
+        <p id="p-2-life"></p>
+        <div class="input-group">
+          <input
+            type="button"
+            value="-"
+            class="button-minus"
+            data-field="quantity"
+          />
+          <input
+            type="number"
+            step="1"
+            max=""
+            value="1"
+            name="quantity"
+            class="quantity-field"
+          />
+          <input
+            type="button"
+            value="+"
+            class="button-plus"
+            data-field="quantity"
+          />
+        </div>
+      </div>
     </div>
   </body>
 </html>
