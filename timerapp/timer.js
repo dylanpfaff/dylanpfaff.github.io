@@ -46,9 +46,11 @@ let rounds = 0;
 time.innerHTML = t;
 
 let addPlayers = function(){
-
+if (numberOfPlayers == 0){
+  let table = document.getElementById("stats");
 
   for (let i = 1; i < 5; i++){
+
 
     let player = document.getElementById('player-' + i).value;
 
@@ -59,33 +61,28 @@ let addPlayers = function(){
     let newPlayer = new Player(player);
     players.push(newPlayer);
     numberOfPlayers++;
+    let newRow = document.createElement("tr");
+    let playerName = document.createElement("td");
+    let playerTurns = document.createElement("td");
+    newRow.appendChild(playerName);
+    newRow.appendChild(playerTurns);
+    table.appendChild(newRow);
+    playerName.innerHTML = player;
+    //playerTurns.innerHTML
+    playerName.setAttribute("id", player);
+    playerTurns.setAttribute("id", player + "array");
     }
   }
+
+
   console.log("number of players: " + numberOfPlayers);
   //currentPlayerIndex = 0;
   currentPlayer = players[currentPlayerIndex].name;
   currentPlayerTurns = players[currentPlayerIndex].turns;
   time.innerHTML =  currentPlayer + ": " + t;
 
-  // let player1 = document.getElementById('player-1').value;
- 
-  // players.push(player1);
-  // console.log(player1);
-  // //let newPlayer = new Player(player1);
-  // players.push(player1);
-  // let player2 = document.getElementById('player-2').value;
-  // //newPlayer = new Player(player2);
-  // players.push(player2);
-  // let player3 = document.getElementById('player-3').value;
-  // //newPlayer = new Player(player3);
-  // players.push(player3);
-  // let player4 = document.getElementById('player-4').innerHTML;
-  // //newPlayer = new Player(player4);
-  // players.push(player4);
-
-  // let arr = document.querySelectorAll("input");
-
   show('page-1', 'page-2');
+}
 }
 
 
@@ -119,7 +116,8 @@ function myTimer() {
 
 
 // setTimeout() for turn limit 
-let playerStats = document.getElementById("players");
+let turns = document.getElementById("turns");
+
 
 let startButton = document.getElementById("start-button");
 startButton.addEventListener("click", () => {
@@ -135,6 +133,28 @@ resetButton.addEventListener("click", () => {
 
   if(currentPlayer){
   currentPlayerTurns.push(t);
+
+  // sum total time
+
+let sum = 0;
+function sumMembers(){
+  
+
+  for(let i = 0; i < currentPlayerTurns.length; i++){
+
+    sum += currentPlayerTurns[i];
+    
+  } 
+
+}
+  
+sumMembers();
+
+  //let id = players[currentPlayerIndex].turns;
+  // update turns 
+  document.getElementById(currentPlayer + "array").innerHTML = sum;
+  
+  
 
   console.log("LOG => current player: " + currentPlayer + ", time: " +  t + ", turns: " + 
   currentPlayerTurns.length + ", array: " + currentPlayerTurns + ", total rounds: " + rounds);
@@ -152,13 +172,14 @@ resetButton.addEventListener("click", () => {
   currentPlayerTurns.length + ", array: " + currentPlayerTurns);
 }
 // update player stats // add list
-for (let i = 0; i < numberOfPlayers; i++){
-  playerStats.innerHTML = "player: " + players[i].name + ", turns: " + 
-  players[i].turns.length + ", array: " + players[i].turns + ", total rounds: " + rounds;
-  };
+// for (let i = 0; i < numberOfPlayers; i++){
+//   playerStats.innerHTML = "player: " + players[i].name + ", turns: " + 
+//   players[i].turns.length + ", array: " + players[i].turns + ", total rounds: " + rounds;
+//   };
 
   t = 0;
   stopCount();
+  startCount();
 });
 
 // get timer image

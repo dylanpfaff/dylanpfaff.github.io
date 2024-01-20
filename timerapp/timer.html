@@ -29,19 +29,25 @@
 
       <form>
         <h2>Submit players</h2>
-        <label for="name">name:</label><br />
+        <!-- <label for="name">name:</label><br /> -->
         <input id="player-1" type="text" placeholder="Tom Bombadil" /><br />
-        <label for="name">name:</label><br />
+        <!-- <label for="name">name:</label><br /> -->
         <input id="player-2" type="text" placeholder="Tom Bombady" /><br />
-        <label for="name">name:</label><br />
+        <!-- <label for="name">name:</label><br /> -->
         <input id="player-3" type="text" placeholder="Tom Bombadave" /><br />
-        <label for="name">name:</label><br />
+        <!-- <label for="name">name:</label><br /> -->
         <input id="player-4" type="text" placeholder="Tom Bombadosh" /><br />
         <button id="enter-players" onclick="addPlayers()" type="button">
           Start new game
         </button>
       </form>
       <h2>Player Stats</h2>
+      <table id="stats">
+        <tr>
+          <th>Player</th>
+          <th>Total Time</th>
+        </tr>
+      </table>
       <div id="players"></div>
     </div>
   </body>

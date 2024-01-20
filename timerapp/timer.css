@@ -56,8 +56,15 @@ button {
 
 form {
 
-  border-bottom: 3px solid rgb(137, 29, 192);
+  border-bottom: 3px solid rgb(63, 11, 88);
 
+}
+
+table, th, td {
+  margin: auto;
+  border: 3px solid rgb(63, 11, 88);
+  border-collapse: collapse;
+  padding: 10px;
 }
 
 /* #page-1 {
