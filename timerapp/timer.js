@@ -1,56 +1,191 @@
 
+function show(shown, hidden) {
+  document.getElementById(shown).style.display='block';
+  document.getElementById(hidden).style.display='none';
+  return false;
+}
+
+show("page-1", "page-2");
 // get canvas
-let canvas = document.querySelector('canvas');
+
+let canvas = document.getElementById("time-canvas");
 let ctx = canvas.getContext('2d');
-let body = document.querySelector('body');
 
+//let body = document.querySelector('body');
 
-// get image
-let img = new Image();
-img.src = "sa.png";
-// img.src = "sand.png";
-img.setAttribute("id", "timer");
-
+// get audio
 let song = new Audio();
 song.src = "congrats.mp3"
 
+// player variables
+// let newPlayer = document.getElementById("new-player").innerHTML;
 
 
-// call drawing on img load
-img.onload = function() {
+let players = [];
+// let player = document.getElementById("player");
+// player.innerHTML = "on deck: " + players[0];
+class Player {
+
+  constructor (name){
+    this.name = name;
+    this.turns = [];
+  }
+}
+
+
+// timer variables
+let on = false;
+let t = 0;
+let time = document.getElementById("time");
+let clear; 
+let currentPlayer;
+let currentPlayerTurns;
+let currentPlayerIndex = 0;
+let numberOfPlayers = 0;
+let rounds = 0;
+time.innerHTML = t;
+
+let addPlayers = function(){
+
+
+  for (let i = 1; i < 5; i++){
+
+    let player = document.getElementById('player-' + i).value;
+
+    if(!player){
+      console.log("empty slot");
+    }
+    if(player){
+    let newPlayer = new Player(player);
+    players.push(newPlayer);
+    numberOfPlayers++;
+    }
+  }
+  console.log("number of players: " + numberOfPlayers);
+  //currentPlayerIndex = 0;
+  currentPlayer = players[currentPlayerIndex].name;
+  currentPlayerTurns = players[currentPlayerIndex].turns;
+  time.innerHTML =  currentPlayer + ": " + t;
+
+  // let player1 = document.getElementById('player-1').value;
+ 
+  // players.push(player1);
+  // console.log(player1);
+  // //let newPlayer = new Player(player1);
+  // players.push(player1);
+  // let player2 = document.getElementById('player-2').value;
+  // //newPlayer = new Player(player2);
+  // players.push(player2);
+  // let player3 = document.getElementById('player-3').value;
+  // //newPlayer = new Player(player3);
+  // players.push(player3);
+  // let player4 = document.getElementById('player-4').innerHTML;
+  // //newPlayer = new Player(player4);
+  // players.push(player4);
+
+  // let arr = document.querySelectorAll("input");
+
+  show('page-1', 'page-2');
+}
+
+
+let startCount = function(){
+  clear = setInterval(myTimer, 1000);
+  on = true;
+};
+
+let stopCount = function(){
+  clearInterval(clear);
+  on = false;
+  if (currentPlayer){
+    time.innerHTML = currentPlayer + ": " + t;
+    }
+    if (!currentPlayer){
+      time.innerHTML = t;
+    }
+};
+
+function myTimer() {
+  t++;
+  if (currentPlayer){
+  time.innerHTML = currentPlayer + ": " + t;
+  }
+
+  if (!currentPlayer){
+    time.innerHTML = t;
+  }
+
+}
+
+
+// setTimeout() for turn limit 
+let playerStats = document.getElementById("players");
+
+let startButton = document.getElementById("start-button");
+startButton.addEventListener("click", () => {
+  if(!on){
+    startCount();
+  } else {
+  stopCount();
+  };
+});
+
+let resetButton = document.getElementById("reset-button");
+resetButton.addEventListener("click", () => {
+
+  if(currentPlayer){
+  currentPlayerTurns.push(t);
+
+  console.log("LOG => current player: " + currentPlayer + ", time: " +  t + ", turns: " + 
+  currentPlayerTurns.length + ", array: " + currentPlayerTurns + ", total rounds: " + rounds);
+
+  currentPlayerIndex++;
+
+  if (currentPlayerIndex >= numberOfPlayers){
+    currentPlayerIndex = 0;
+    rounds++;
+  }
+  
+  currentPlayer = players[currentPlayerIndex].name;
+  currentPlayerTurns = players[currentPlayerIndex].turns;
+  console.log("Next up: " + currentPlayer + ", turns: " + 
+  currentPlayerTurns.length + ", array: " + currentPlayerTurns);
+}
+// update player stats // add list
+for (let i = 0; i < numberOfPlayers; i++){
+  playerStats.innerHTML = "player: " + players[i].name + ", turns: " + 
+  players[i].turns.length + ", array: " + players[i].turns + ", total rounds: " + rounds;
+  };
+
+  t = 0;
+  stopCount();
+});
+
+// get timer image
+let timer = new Image();
+timer.src = "sa.png";
+timer.setAttribute("id", "timer");
+
+// call drawing on timer load
+timer.onload = function() {
   init();
   
 };
 
-
 // setup canvas and image parameters
-const width = img.naturalWidth/3;
-const height = img.naturalHeight;
+const width = timer.naturalWidth/3;
+const height = timer.naturalHeight;
 const scale = 1.5;
 const scaledWidth = scale * width;
 const scaledHeight = scale * height;
 
-canvas.width = img.naturalWidth / 3 * scale;
-canvas.height = img.naturalHeight * scale;
 
+canvas.width = timer.naturalWidth / 3 * scale;
+canvas.height = timer.naturalHeight * scale;
 
- 
-window.addEventListener("click", song.play());
-
-
-// let imgCenter = width / 2;
-// let windowCenter = window.visualViewport.width / 2;
-// let canvasCenter = windowCenter - imgCenter;
-// console.log("window.visualViewport.width: " + window.visualViewport.width);
-// console.log("windowCenter: " + windowCenter);
-// console.log("canvasCenter: " + canvasCenter);
-// console.log("imgCenter: " + imgCenter);
-console.log(img.naturalHeight);
-
-
-// 
+// custom draw image by sprite and canvas frame
 function drawFrame(frameX, frameY, canvasX, canvasY) {
-    ctx.drawImage(img,
+    ctx.drawImage(timer,
                   frameX * width, frameY * height, width, height,
                   canvasX, canvasY, scaledWidth, scaledHeight);
   }
@@ -64,9 +199,6 @@ const cycleLoop = [0, 1, 2];
 let currentLoopIndex = 0;
 let frameCount = 0;
 
-// if(true){
-//     window.cancelAnimationFrame();
-//   }
 
 function step() {
   frameCount++;

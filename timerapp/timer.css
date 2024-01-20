@@ -1,7 +1,11 @@
 
-canvas {
+#time-canvas {
+
     border: 3px solid rgb(52, 4, 76);
     background-color: rgb(68, 31, 105); 
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     /* text-align: center; */
 /* width: 100vw;
 height: 100vh; */
@@ -9,21 +13,57 @@ height: 100vh; */
   
 body {
     /* border: 3px solid rgb(69, 194, 31); */
-    /* background-color: rebeccapurple; */
+    background-color: rgb(126, 78, 174);
     justify-content: center;
     text-align: center;
     width: 100vw;
     height: 100vh;
 }
 
-div {
-    width: 100vw;
-    height: 100vh;
-    text-align: center;
-    border: 3px solid red;
-  }
-
-
-#timer {
-    
+#time, #player {
+  margin: auto;
+  padding-top: 15px;
+  width: 20vw;
+  height: 10vh;
+  font-size: 25px;
+  border: 3px solid rgb(0, 0, 0);
+  background-color: rgb(218, 187, 249);
+  border-radius: 15px;
 }
+
+#start-button, #reset-button {
+
+    width: 10vw;
+    height: 10vh;
+    border-radius: 10px;
+}
+
+a {
+font-size: 25px;
+}
+
+#home {
+position: absolute;
+top: 25px;
+left: 25px;
+font-size: 20px;
+}
+
+button {
+
+  margin: 10px;
+}
+
+form {
+
+  border-bottom: 3px solid rgb(137, 29, 192);
+
+}
+
+/* #page-1 {
+  display: 'block'
+}
+
+#page-2 {
+  display: 'none'
+} */

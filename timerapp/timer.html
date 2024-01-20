@@ -10,19 +10,39 @@
     <script src="timer.js" defer></script>
   </head>
   <body>
-    <h1>timer app</h1>
-    <a href="../index.html" id="home">Home</a><br />
+    <a href="../index.html" id="home">Home</a>
 
-    <!-- <img
-        id="timer"
-        src="sand-timer-copy.svg"
-        class="responsive"
-        onclick="audioElement.play()"
-      /> -->
-    <canvas> </canvas>
+    <div id="page-1">
+      <a href="#" id="timer" onclick="return show('page-2', 'page-1');"
+        >View Player Stats</a
+      ><br />
+      <br />
+      <div id="time"></div>
+      <canvas id="time-canvas"> </canvas><br />
+      <img id="start-button" src="start-button.svg" />
+      <img id="reset-button" src="start-button.svg" />
+    </div>
 
-    <!-- <div id="container">
-      <img id="timer" class="" src="sand-timer.png" />
-    </div> -->
+    <div id="page-2">
+      <a href="#" onclick="return show('page-1', 'page-2');">Return to timer</a
+      ><br />
+
+      <form>
+        <h2>Submit players</h2>
+        <label for="name">name:</label><br />
+        <input id="player-1" type="text" placeholder="Tom Bombadil" /><br />
+        <label for="name">name:</label><br />
+        <input id="player-2" type="text" placeholder="Tom Bombady" /><br />
+        <label for="name">name:</label><br />
+        <input id="player-3" type="text" placeholder="Tom Bombadave" /><br />
+        <label for="name">name:</label><br />
+        <input id="player-4" type="text" placeholder="Tom Bombadosh" /><br />
+        <button id="enter-players" onclick="addPlayers()" type="button">
+          Start new game
+        </button>
+      </form>
+      <h2>Player Stats</h2>
+      <div id="players"></div>
+    </div>
   </body>
 </html>
