@@ -1,11 +1,15 @@
 
-function show(shown, hidden) {
+let currentPage;
+
+function show(shown, hidden, hidden2) {
   document.getElementById(shown).style.display='block';
   document.getElementById(hidden).style.display='none';
+  document.getElementById(hidden2).style.display='none';
+  currentPage = shown;
   return false;
 }
 
-show("page-1", "page-2");
+show("page-1", "page-2", "page-3");
 // get canvas
 
 let canvas = document.getElementById("time-canvas");
@@ -43,7 +47,7 @@ let currentPlayerTurns;
 let currentPlayerIndex = 0;
 let numberOfPlayers = 0;
 let rounds = 0;
-time.innerHTML = t;
+time.innerHTML = "Time: " + t;
 
 let addPlayers = function(){
 if (numberOfPlayers == 0){
@@ -83,7 +87,13 @@ if (numberOfPlayers == 0){
     p2.innerText = "Dave";
   }
 
+  function addOne (){
 
+  }
+
+  function subtractOne (){
+    
+  }
   console.log("number of players: " + numberOfPlayers);
   //currentPlayerIndex = 0;
   currentPlayer = players[currentPlayerIndex].name;
@@ -129,7 +139,7 @@ let turns = document.getElementById("turns");
 
 
 let startButton = document.getElementById("start-button");
-startButton.addEventListener("click", () => {
+canvas.addEventListener("click", () => {
   if(!on){
     startCount();
   } else {
@@ -137,8 +147,9 @@ startButton.addEventListener("click", () => {
   };
 });
 
+let timeAndName = document.getElementById("time");
 let resetButton = document.getElementById("reset-button");
-resetButton.addEventListener("click", () => {
+timeAndName.addEventListener("click", () => {
 
   if(currentPlayer){
   currentPlayerTurns.push(t);

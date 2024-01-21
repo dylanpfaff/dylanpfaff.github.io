@@ -10,22 +10,29 @@
     <script src="timer.js" defer></script>
   </head>
   <body>
-    <a href="../index.html" id="home">Home</a>
     <div id="rounds">Rounds: 0</div>
+    <div id="time"></div>
 
     <div id="page-1">
       <a href="#" id="timer" onclick="return show('page-2', 'page-1');"
         >View Player Stats</a
+      >
+      <a href="#" onclick="return show('page-3', 'page-1', 'page-2');"
+        >View Life Counter</a
       ><br />
       <br />
-      <div id="time"></div>
+
       <canvas id="time-canvas"> </canvas><br />
-      <img id="start-button" src="start-button.svg" />
-      <img id="reset-button" src="start-button.svg" />
+      <!-- <img id="start-button" src="start-button.svg" /> -->
+      <!-- <img id="reset-button" src="start-button.svg" /> -->
     </div>
 
     <div id="page-2">
-      <a href="#" onclick="return show('page-1', 'page-2');">Return To Timer</a
+      <a href="#" onclick="return show('page-1', 'page-2', 'page-3');"
+        >Return To Timer</a
+      >
+      <a href="#" onclick="return show('page-3', 'page-1', 'page-2');"
+        >View Life Counter</a
       ><br />
 
       <form>
@@ -49,8 +56,39 @@
           <th>Total Time</th>
         </tr>
       </table>
-      <div id="life-counter">
-        <p id="p-1-life"></p>
+    </div>
+    <div id="page-3">
+      <a href="#" onclick="return show('page-1', 'page-2', 'page-3');"
+        >Return To Timer</a
+      >
+      <a href="#" onclick="return show('page-2', 'page-1', 'page-3');"
+        >View Player Stats</a
+      ><br />
+      <h2 id="life">Life Counter</h2>
+      <p id="p-1-life"></p>
+      <input
+        type="button"
+        value="-"
+        class="button-minus"
+        data-field="quantity"
+        onclick=""
+      />
+      <input
+        type="number"
+        step="1"
+        max=""
+        value="1"
+        name="quantity"
+        class="quantity-field"
+      />
+      <input
+        type="button"
+        value="+"
+        class="button-plus"
+        data-field="quantity"
+      /><br />
+      <p id="p-2-life"></p>
+      <div class="input-group">
         <input
           type="button"
           value="-"
@@ -70,31 +108,9 @@
           value="+"
           class="button-plus"
           data-field="quantity"
-        /><br />
-        <p id="p-2-life"></p>
-        <div class="input-group">
-          <input
-            type="button"
-            value="-"
-            class="button-minus"
-            data-field="quantity"
-          />
-          <input
-            type="number"
-            step="1"
-            max=""
-            value="1"
-            name="quantity"
-            class="quantity-field"
-          />
-          <input
-            type="button"
-            value="+"
-            class="button-plus"
-            data-field="quantity"
-          />
-        </div>
+        />
       </div>
     </div>
+    <a href="../index.html" id="home">Home</a>
   </body>
 </html>
