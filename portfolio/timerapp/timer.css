@@ -1,0 +1,110 @@
+
+#time-canvas {
+
+    /* border: 3px solid rgb(52, 4, 76); */
+    background-color: rgb(126, 78, 174);
+    border-radius: 10px;
+    margin-top: 35px;
+    margin-bottom: 5px;
+    /* text-align: center; */
+/* width: 100vw;
+height: 100vh; */
+  }
+  
+body {
+    /* border: 3px solid rgb(69, 194, 31); */
+    background-color: rgb(126, 78, 174);
+    justify-content: center;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+#time {
+  position: absolute;
+  top: 25px;
+  left: 10px;
+   margin: auto;
+  padding-top: 15px; 
+  width: 20vw;
+  height: 10vh;
+  font-size: 25px;
+  border: 3px solid rgb(81, 45, 117);
+  background-color: rgb(192, 150, 234);
+  border-radius: 5px;
+}
+
+
+
+#start-button, #reset-button {
+
+    width: 30vw;
+    height: 30vh;
+    border-radius: 10px;
+}
+
+a {
+font-size: 25px;
+margin-left: 25px;
+margin-right: 25px;
+}
+
+#rounds {
+  position: absolute;
+top: 25px;
+right: 10px;
+font-size: 20px;
+background-color: rgb(rgb(183, 27, 27));
+position: absolute;
+  
+   margin: auto;
+  padding-top: 15px; 
+  width: 20vw;
+  height: 10vh;
+  font-size: 25px;
+  border: 3px solid rgb(81, 45, 117);
+  background-color: rgb(192, 150, 234);
+  border-radius: 5px;
+}
+
+#home {
+position: absolute;
+bottom: 25px;
+left: 25px;
+font-size: 20px;
+}
+
+button {
+
+  margin: 10px;
+}
+
+form {
+
+  border-bottom: 3px solid rgb(63, 11, 88);
+
+}
+
+#life {
+  /* margin-bottom: 50px;
+  border-bottom: 3px solid rgb(63, 11, 88); */
+}
+
+table, th, td {
+  margin: auto;
+  border: 3px solid rgb(63, 11, 88);
+  border-collapse: collapse;
+  padding: 10px;
+}
+
+input {
+  margin-bottom: 20px;;
+}
+
+/* #page-1 {
+  display: 'block'
+}
+
+#page-2 {
+  display: 'none'
+} */

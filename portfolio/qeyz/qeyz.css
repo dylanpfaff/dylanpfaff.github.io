@@ -1,0 +1,20 @@
+.myCanvas {
+  border: 1px solid black;
+}
+
+#branch {
+  width: 1000px;
+  border: 1px solid black;
+  z-index: 1;
+}
+
+#imagetwo {
+  width: 1000px;
+  border: 1px solid black;
+  z-index: 2;
+}
+
+#bkgd {
+  padding: 1px black;
+  z-index: -1;
+}
