@@ -20,6 +20,16 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
 }
 
+// Initialize the client library
+function handleClientLoad() {
+  gapi.load('client:auth2', loadClient);
+
+
+// Set up event listeners
+document.getElementById('authorize_button').onclick = handleSignInClick;
+document.getElementById('signout_button').onclick = handleSignOutClick;
+}
+
 let call = function(){
 // Load the Google API client library
 function loadClient() {
@@ -82,13 +92,7 @@ function listData() {
   });
 }
 
-// Initialize the client library
-function handleClientLoad() {
-  gapi.load('client:auth2', loadClient);
-}
 
-// Set up event listeners
-document.getElementById('authorize_button').onclick = handleSignInClick;
-document.getElementById('signout_button').onclick = handleSignOutClick;
+
 
 }
