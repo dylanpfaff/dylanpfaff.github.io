@@ -20,7 +20,7 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
 }
 
-
+let call = function(){
 // Load the Google API client library
 function loadClient() {
   gapi.load('client:auth2', initClient);
@@ -91,3 +91,4 @@ function handleClientLoad() {
 document.getElementById('authorize_button').onclick = handleSignInClick;
 document.getElementById('signout_button').onclick = handleSignOutClick;
 
+}
