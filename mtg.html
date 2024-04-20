@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Sign-In Example</title>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+      function initGoogleSignIn() {
+        gapi.load("auth2", function () {
+          gapi.auth2
+            .init({
+              client_id:
+                "300755306065-rm4gd176lsf1b7pbkilso5e0oclt4kq9.apps.googleusercontent.com",
+            })
+            .then(function (auth2) {
+              console.log("Google Sign-In initialized.");
+            });
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="initGoogleSignIn()">Sign in with Google</button>
+  </body>
+</html>
